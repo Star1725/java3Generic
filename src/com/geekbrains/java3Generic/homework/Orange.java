@@ -1,14 +1,8 @@
 package com.geekbrains.java3Generic.homework;
 
 public class Orange extends Fruit{
-
+    @Override
     public float getWeight() {
-        return weight;
-    }
-
-    private final float weight;
-
-    public Orange(float weight) {
-        this.weight = weight;
+        return 1.5f;
     }
 }

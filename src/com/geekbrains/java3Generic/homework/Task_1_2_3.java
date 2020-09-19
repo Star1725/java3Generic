@@ -1,8 +1,6 @@
 package com.geekbrains.java3Generic.homework;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 
 public class Task_1_2_3 {
@@ -17,26 +15,34 @@ public class Task_1_2_3 {
         System.out.println((transformArrToArrayList(arrInteger)).toString());
         System.out.println((transformArrToArrayList(arrString)).toString());
 
-        Box<Apple> appleBox = new Box<Apple>(new ArrayList());
-        for (int i = 0; i < 150; i++) {
-            appleBox.addFruit(new Apple(1.0f));
+        Box<Apple> appleBox = new Box<>();
+        for (int i = 0; i < 120; i++) {
+            appleBox.addFruit(new Apple());
         }
 
-        Box<Orange> orangeBox = new Box<Orange>(new ArrayList());
+        Box<Orange> orangeBox = new Box<>();
         for (int i = 0; i < 100; i++) {
-            orangeBox.addFruit(new Orange(1.5f));
+            orangeBox.addFruit(new Orange());
         }
 
         System.out.println();
-        System.out.println("weight appleBox = " + appleBox.getWeight());
-        System.out.println("weight orangeBox = " + orangeBox.getWeight());
+        //расчёт веса коробки с яблоками через метод addFruit(new Apple()
+        System.out.println("weight appleBox = " + appleBox.getWeight1());
+        //расчёт веса коробки с апельсинами через метод getWeight2()
+        System.out.println("weight orangeBox = " + orangeBox.getWeight2());
         System.out.println();
+
         System.out.println("Is equals weight appleBox and weight orangeBox? - " + appleBox.compareTo(orangeBox));
         //новая коробка для яблок
-        Box<Apple> appleBox1 = new Box<>(new ArrayList<>());
-        appleBox1.setFruits(appleBox.getFruits());
+        Box<Apple> appleBox1 = new Box<>();
         //пытаемся в новую коробку для яблок положить апельсины
         //appleBox1.setFruits(orangeBox.getFruits());
+
+        System.out.println();
+        Box<Fruit> newBox = new Box<>();
+        Box.shiftFruit(newBox, appleBox);
+        System.out.println("weight newBox = " + newBox.getWeight2() + ". Type fruit - " + newBox.getTypeFruit());
+        System.out.println("weight appleBox = " + appleBox.getWeight2());
     }
 
     public static <T> T[] changeElementsOfArr(T[] arr, int i, int j){
@@ -49,4 +55,5 @@ public class Task_1_2_3 {
     public static <E> List transformArrToArrayList(E[] arr){
         return new ArrayList<>(Arrays.asList(arr));
     }
+
 }
